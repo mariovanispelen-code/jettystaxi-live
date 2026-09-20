@@ -37,12 +37,10 @@ export const SITE = {
 } as const;
 
 export const NAV = [
+  { href: "/#platinum", label: "Platinum" },
   { href: "/#diensten", label: "Diensten" },
-  { href: "/#schiphol", label: "Schiphol" },
-  { href: "/#tarieven", label: "Tarieven" },
   { href: "/#reserveren", label: "Reserveren" },
-  { href: "/m5-wedding", label: "M5 Wedding" },
-  { href: "/contact", label: "Contact" },
+  { href: "https://m5wedding.nl", label: "M5 Wedding" },
 ] as const;
 
 export const FOOTER_LEGAL = [
