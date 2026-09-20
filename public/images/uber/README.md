@@ -1,6 +1,6 @@
 # Uber proof assets (staging)
 
-Verified screenshots (no fake stars):
+These assets are real Uber profile screenshots, zelf gepresenteerd:
 - `thierry-platinum-profile.jpg`
 - `compliments-row.jpg`
 
