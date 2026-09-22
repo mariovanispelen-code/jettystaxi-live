@@ -12,7 +12,7 @@ export function Hero() {
             Uber Platinum chauffeur
           </p>
           <p className="inline-flex items-center rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs font-medium uppercase tracking-wider text-white/80">
-            {SITE.legalName} · {SITE.personTitle}
+            {SITE.displayPerson} · {SITE.personTitle}
           </p>
         </div>
 
@@ -31,10 +31,10 @@ export function Hero() {
 
         <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
           <a
-            href={`tel:${SITE.phoneTel}`}
+            href="#reserveren"
             className="inline-flex items-center justify-center rounded-full bg-amber-300 px-6 py-3 text-sm font-bold text-black hover:bg-amber-200"
           >
-            Bel {SITE.phoneDisplay}
+            Reserveren
           </a>
           <a
             href={SITE.whatsappUrl}
@@ -45,10 +45,10 @@ export function Hero() {
             WhatsApp
           </a>
           <a
-            href="#reserveren"
+            href={`tel:${SITE.phoneTel}`}
             className="inline-flex items-center justify-center rounded-full border border-white/20 px-6 py-3 text-sm font-semibold text-white hover:bg-white/5"
           >
-            Reserveren
+            Bel {SITE.phoneDisplay}
           </a>
         </div>
       </div>

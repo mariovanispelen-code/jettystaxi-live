@@ -1,7 +1,11 @@
+const WA_PREFILL =
+  "Hallo Thierry, ik wil een rit aanvragen op [datum] van [vertrek] naar [bestemming].";
+
 export const SITE = {
   name: "Thierry's Taxi",
-  legalName: "Thierry van Ispelen",
+  legalName: "Thierone Mobility Services",
   personTitle: "PRIVATE CHAUFFEUR",
+  displayPerson: "Thierry van Ispelen",
   legalPartyPlaceholder: "[EXACTE KVK-CONTRACTSPARTIJ NOG CONTROLEREN]",
   kvk: "97694932",
   btwPlaceholder: "[btw-nummer invullen]",
@@ -12,7 +16,8 @@ export const SITE = {
   email: "info@thierrystaxi.nl",
   url: "https://thierrystaxi.nl",
   m5Url: "https://m5wedding.nl",
-  whatsappUrl: "https://wa.me/31683555034",
+  whatsappPrefill: WA_PREFILL,
+  whatsappUrl: "https://wa.me/31683555034?text=" + encodeURIComponent(WA_PREFILL),
   marioPhone: "+31629366824",
   marioPhoneDisplay: "06 2936 6824",
   trustLine: "De vereiste chauffeursbevoegdheden, vergunningen en verzekeringen zijn aanwezig.",
@@ -20,7 +25,14 @@ export const SITE = {
   m5PackageLabel: "4-uur pakket",
   m5LitePrice: 499,
   m5LiteLabel: "M5 LITE — 2 uur",
-  introOffer: { price: 499, hours: 2, includedKm: 100, promoCode: "M5WEDDING", validityLabel: "september of oktober 2026", validityMonths: ["2026-09", "2026-10"] as const },
+  introOffer: {
+    price: 499,
+    hours: 2,
+    includedKm: 100,
+    promoCode: "M5WEDDING",
+    validityLabel: "september of oktober 2026",
+    validityMonths: ["2026-09", "2026-10"] as const,
+  },
   waitIncludedMin: 10,
   waitPerMin: 0.75,
   cancelUnder24h: "100%",
