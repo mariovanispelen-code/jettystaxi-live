@@ -1,24 +1,38 @@
 import type { Metadata } from "next";
+import { JsonLd } from "@/components/JsonLd";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Thierry's Taxi | Privé chauffeur, BOB & Schiphol | IJmuiden–Haarlem",
+  title: "Privéchauffeur IJmuiden & Schiphol | Thierry's Taxi",
   description:
-    "Privé transport, BOB pick-up (ook in uw auto) en airport transfers. Persoonlijk, veilig, direct bereikbaar. Thierry's Taxi — IJmuiden / Haarlem e.o.",
+    "Premium taxi en privéchauffeur vanuit IJmuiden: Schiphol-transfers, Amsterdam, BOB in je eigen auto. Betrouwbaar, discreet, vaste prijs op aanvraag.",
   openGraph: {
-    title: "Thierry's Taxi — privé chauffeur · BOB · Schiphol",
+    title: "Privéchauffeur IJmuiden & Schiphol | Thierry's Taxi",
     description:
-      "Privé transport, BOB pick-up (ook in uw auto) en airport transfers. Uber Platinum chauffeur.",
+      "Premium taxi en privéchauffeur vanuit IJmuiden: Schiphol-transfers, Amsterdam, BOB in je eigen auto. Betrouwbaar, discreet, vaste prijs op aanvraag.",
     locale: "nl_NL",
     type: "website",
+    siteName: "Thierry's Taxi",
+    url: "https://thierrystaxi.nl/",
   },
-  alternates: { canonical: "https://thierrystaxi.nl/" },
+  alternates: {
+    canonical: "https://thierrystaxi.nl/",
+    languages: {
+      "nl-NL": "https://thierrystaxi.nl/",
+      "tr-TR": "https://thierrystaxi.nl/tr/",
+      ar: "https://thierrystaxi.nl/ar/",
+      "x-default": "https://thierrystaxi.nl/",
+    },
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="nl">
-      <body className="min-h-screen bg-black font-sans antialiased text-white">{children}</body>
+      <body className="min-h-screen bg-black pb-20 font-sans antialiased text-white md:pb-0">
+        <JsonLd />
+        {children}
+      </body>
     </html>
   );
 }
