@@ -2,12 +2,20 @@ import type { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = "https://thierrystaxi.nl";
-  return [
-    { url: `${base}/`, changeFrequency: "weekly", priority: 1 },
-    { url: `${base}/tr/`, changeFrequency: "weekly", priority: 0.8 },
-    { url: `${base}/ar/`, changeFrequency: "weekly", priority: 0.8 },
-    { url: `${base}/boek`, changeFrequency: "monthly", priority: 0.5 },
-    { url: `${base}/taxi-schiphol/`, changeFrequency: "weekly", priority: 0.9 },
-    { url: `${base}/bob-chauffeur/`, changeFrequency: "weekly", priority: 0.9 },
-  ];
+  const paths = ["", "/en", "/zh", "/ja"];
+  const lastModified = new Date();
+  return paths.map((path) => ({
+    url: `${base}${path || "/"}`,
+    lastModified,
+    changeFrequency: "weekly" as const,
+    priority: path === "" ? 1 : 0.8,
+    alternates: {
+      languages: {
+        nl: `${base}/`,
+        en: `${base}/en`,
+        "zh-Hans": `${base}/zh`,
+        ja: `${base}/ja`,
+      },
+    },
+  }));
 }

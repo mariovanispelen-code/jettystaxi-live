@@ -1,28 +1,20 @@
 {
   "name": "thierrystaxi",
-  "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -H 0.0.0.0 -p 3458",
     "build": "next build",
-    "start": "next start",
-    "lint": "eslint",
-    "vercel-build": "next build"
+    "start": "next start -H 0.0.0.0 -p 3458"
   },
   "dependencies": {
-    "next": "16.3.5",
-    "react": "19.2.8",
-    "react-dom": "19.2.8",
-    "zod": "^4.6.5"
+    "next": "15.5.21",
+    "react": "19.1.2",
+    "react-dom": "19.1.2"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "eslint": "^9",
-    "eslint-config-next": "16.3.5",
-    "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "5.8.3",
+    "@types/node": "22.15.29",
+    "@types/react": "19.1.6",
+    "@types/react-dom": "19.1.5"
   }
 }
