@@ -1,34 +1,57 @@
-import { PROFILE_FACTS } from "@/lib/constants";
+import type { LandingCopy } from "@/lib/copy";
+import { PROFILE_FACTS } from "@/lib/profile";
 
-const ITEMS = [
-  "★ Platinum chauffeur",
-  `${PROFILE_FACTS.ridesApprox} ritten in ${PROFILE_FACTS.ridesPeriod}`,
-  "Uitstekende service ×12",
-  "Boven verwachting ×10",
-  "Vrolijke chauffeur ×3",
-  "Leuk gesprek ×2",
-  `Talen: ${PROFILE_FACTS.languages.join(" · ")}`,
-] as const;
+function buildItems(copy: LandingCopy): { text: string; pride?: boolean }[] {
+  return [
+    { text: `★ ${copy.achievementPlatinum}`, pride: true },
+    { text: `★ ${copy.achievementFiveStar}`, pride: true },
+    {
+      text: `${PROFILE_FACTS.ridesApprox} ritten / ${PROFILE_FACTS.ridesPeriod}`,
+    },
+    ...PROFILE_FACTS.compliments.map((c) => ({
+      text: `${c.label} ×${c.count}`,
+    })),
+    { text: PROFILE_FACTS.sourceShort },
+  ];
+}
 
-export function AchievementTicker() {
-  const line = ITEMS.join("   ·   ");
+export default function AchievementTicker({ copy }: { copy: LandingCopy }) {
+  const items = buildItems(copy);
+  const plain = items.map((i) => i.text);
   return (
     <div
-      className="overflow-hidden border-b border-white/10 bg-[#0a0a0a]"
+      className="achievement-ticker"
       role="region"
-      aria-label="Achievements van Thierry"
+      aria-label={copy.tickerAria}
     >
       <p className="sr-only">
-        {ITEMS.join(". ")}. Bron: Uber chauffeursprofiel, zelf gepresenteerd.
+        {plain.join(". ")}. {PROFILE_FACTS.sourceLabel}.
       </p>
-      <div className="group flex overflow-hidden py-3.5">
-        <div className="flex min-w-full shrink-0 animate-[marquee_40s_linear_infinite] whitespace-nowrap motion-reduce:animate-none">
-          <span className="px-8 text-sm font-semibold tracking-wide text-amber-300">
-            {line}
-            <span className="mx-8 text-white/40">·</span>
-            {line}
-          </span>
-        </div>
+      <div className="achievement-ticker__track">
+        {[0, 1].map((dup) => (
+          <div
+            key={dup}
+            className="achievement-ticker__marquee"
+            aria-hidden={dup === 1 ? true : undefined}
+          >
+            <span className="achievement-ticker__text">
+              {items.map((item, i) => (
+                <span key={`${dup}-${i}`}>
+                  <span
+                    className={
+                      item.pride ? "achievement-ticker__pride" : undefined
+                    }
+                  >
+                    {item.text}
+                  </span>
+                  <span className="achievement-ticker__sep" aria-hidden="true">
+                    ·
+                  </span>
+                </span>
+              ))}
+            </span>
+          </div>
+        ))}
       </div>
     </div>
   );
