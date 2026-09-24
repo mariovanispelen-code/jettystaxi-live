@@ -1,19 +1,15 @@
 "use client";
-
 import { useEffect } from "react";
 
 export default function BoekPage() {
   useEffect(() => {
-    window.location.replace("/#reserveren");
+    window.location.replace("/#online-boeken");
   }, []);
   return (
-    <main className="flex min-h-screen items-center justify-center bg-black px-6 text-center text-white">
-      <p>
-        Doorsturen naar reserveren…{" "}
-        <a href="/#reserveren" className="text-amber-300 underline">
-          Klik hier
-        </a>
-      </p>
+    <main style={{ padding: 48, textAlign: "center" }}>
+      <a className="btn btn--primary" href="/#online-boeken">
+        Naar online boeken
+      </a>
     </main>
   );
 }
